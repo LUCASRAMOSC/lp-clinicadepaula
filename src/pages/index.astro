@@ -1,0 +1,119 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import { site } from '../config/site'
+---
+<BaseLayout title={site.title} description={site.description}>
+  <header class="sticky top-0 z-50 border-b border-[#dfceb2]/60 bg-[#f8f5f0]/95 backdrop-blur-xl">
+    <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-4 sm:px-8">
+      <!-- Substituir pela logo oficial fornecida pela clínica -->
+      <a href="#inicio" class="font-display text-xl font-semibold tracking-tight sm:text-2xl">
+        {site.name}
+      </a>
+      <a href="#contato" class="rounded-full bg-[#3f3029] px-4 py-2.5 text-xs font-bold text-white transition-colors hover:bg-[#865a3f] sm:px-5 sm:text-sm">
+        Agendar
+      </a>
+    </div>
+    <nav aria-label="Seções da página" class="site-nav mx-auto flex max-w-7xl gap-1 overflow-x-auto px-4 pb-3 sm:px-8">
+      {site.navigation.map((item, index) => (
+        <a data-nav-link href={item.href} class="site-nav__link" aria-current={index === 0 ? 'location' : undefined}>{item.label}</a>
+      ))}
+    </nav>
+  </header>
+
+  <main>
+    <section id="inicio" class="section-anchor overflow-hidden">
+      <div class="mx-auto grid max-w-7xl gap-10 px-5 py-16 sm:px-8 md:py-24 lg:grid-cols-2 lg:items-center lg:gap-14">
+        <div class="max-w-2xl">
+          <p class="mb-6 text-[11px] font-bold uppercase tracking-[0.25em] text-[#865a3f] sm:text-xs">Clínica de Paula · Bem-estar e estética</p>
+          <h1 class="font-display text-[clamp(3.2rem,12vw,6rem)] leading-[1.06] tracking-[-0.045em]">
+            Beleza com <span class="text-[#b98539]">cuidado</span> em cada detalhe.
+          </h1>
+          <p class="mt-7 max-w-lg text-base leading-8 text-muted sm:text-lg">
+            Um espaço pensado para acolher, orientar e valorizar o que torna cada pessoa única.
+          </p>
+          <div class="mt-9 flex flex-wrap gap-3">
+            <a href="#tratamentos" class="rounded-full bg-[#3f3029] px-6 py-3.5 text-sm font-bold text-white transition-colors hover:bg-[#865a3f]">Conheça a clínica</a>
+            <a href="#equipe" class="rounded-full border border-[#d4c1a7] px-6 py-3.5 text-sm font-bold transition-colors hover:bg-white">Nossa equipe</a>
+          </div>
+        </div>
+        <div aria-label="Espaço reservado para fotografia oficial da clínica" class="relative flex aspect-[4/5] items-center justify-center overflow-hidden rounded-[2rem] bg-[#dfceb2] sm:aspect-[5/4] lg:aspect-[4/5]">
+          <div aria-hidden="true" class="absolute -right-12 -top-16 h-64 w-64 rounded-full border border-white/70"></div>
+          <div aria-hidden="true" class="absolute -bottom-20 -left-16 h-80 w-80 rounded-full bg-[#b98539]/20 blur-3xl"></div>
+          <div class="relative max-w-[15rem] px-8 text-center">
+            <p class="font-display text-4xl leading-tight text-[#865a3f]">O seu espaço, a sua história.</p>
+            <p class="mt-5 text-xs font-semibold uppercase tracking-[0.16em] text-[#77695f]">Fotografia oficial em breve</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tratamentos" class="section-anchor bg-white/75 px-5 py-20 sm:px-8 md:py-28">
+      <div class="mx-auto max-w-7xl">
+        <p class="mb-4 text-xs font-bold uppercase tracking-[0.22em] text-[#865a3f]">Tratamentos</p>
+        <h2 class="font-display max-w-3xl text-4xl leading-[1.14] tracking-[-0.035em] sm:text-5xl">Cada cuidado merece atenção especial.</h2>
+        <p class="mt-5 max-w-xl leading-8 text-muted">Em breve, apresentaremos os procedimentos e seus detalhes, definidos com as profissionais da clínica.</p>
+      </div>
+    </section>
+
+    <section id="equipe" class="section-anchor px-5 py-20 sm:px-8 md:py-28">
+      <div class="mx-auto max-w-7xl">
+        <p class="mb-4 text-xs font-bold uppercase tracking-[0.22em] text-[#865a3f]">Conheça nossa equipe</p>
+        <h2 class="font-display text-4xl leading-[1.14] tracking-[-0.035em] sm:text-5xl">Cuidado feito por pessoas.</h2>
+        <div class="mt-10 grid gap-4 sm:grid-cols-2">
+          {site.professionals.map((professional) => (
+            <article class="rounded-[1.75rem] border border-[#dfceb2]/70 bg-white/70 p-7 sm:p-10">
+              <div class="mb-7 h-1 w-12 rounded-full bg-[#7f8374]"></div>
+              <h3 class="font-display text-3xl">{professional.name}</h3>
+              <p class="mt-3 text-sm text-muted">Apresentação e fotografia em preparação.</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="contato" class="section-anchor bg-[#3f3029] px-5 py-20 text-white sm:px-8 md:py-28">
+      <div class="mx-auto max-w-7xl">
+        <p class="mb-5 text-xs font-bold uppercase tracking-[0.22em] text-[#dfceb2]">Contato</p>
+        <h2 class="font-display max-w-3xl text-4xl leading-[1.15] tracking-[-0.035em] sm:text-5xl">Seu cuidado começa com uma conversa.</h2>
+        <p class="mt-6 max-w-xl leading-8 text-white/75">Os canais oficiais de agendamento serão adicionados após a validação da clínica.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="px-5 py-8 text-center text-xs text-muted sm:px-8">
+    <p>Clínica de Paula · Prévia de desenvolvimento</p>
+  </footer>
+
+  <script>
+    const navLinks = Array.from(document.querySelectorAll<HTMLAnchorElement>('[data-nav-link]'))
+    const sections = navLinks
+      .map((link) => document.querySelector<HTMLElement>(link.getAttribute('href') ?? ''))
+      .filter((section): section is HTMLElement => section !== null)
+
+    function updateActiveSection() {
+      const scrollPosition = window.scrollY + 190
+      let current = sections[0]?.id
+      for (const section of sections) {
+        if (section.offsetTop <= scrollPosition) current = section.id
+      }
+      for (const link of navLinks) {
+        if (link.getAttribute('href') === `#${current}`) link.setAttribute('aria-current', 'location')
+        else link.removeAttribute('aria-current')
+      }
+    }
+
+    let pending = false
+    function scheduleUpdate() {
+      if (pending) return
+      pending = true
+      requestAnimationFrame(() => {
+        updateActiveSection()
+        pending = false
+      })
+    }
+
+    window.addEventListener('scroll', scheduleUpdate, { passive: true })
+    window.addEventListener('resize', scheduleUpdate)
+    updateActiveSection()
+  </script>
+</BaseLayout>
