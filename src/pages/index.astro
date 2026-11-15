@@ -1,23 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
 import { site } from '../config/site'
+import SmartNavigation from '../components/navigation/SmartNavigation'
 ---
 <BaseLayout title={site.title} description={site.description}>
-  <header class="sticky top-0 z-50 border-b border-[#dfceb2]/60 bg-[#f8f5f0]/95 backdrop-blur-xl">
-    <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-4 sm:px-8">
-      <!-- Substituir pela logo oficial fornecida pela clínica -->
-      <a href="#inicio" class="font-display text-xl font-semibold tracking-tight sm:text-2xl">
-        {site.name}
-      </a>
-      <a href="#contato" class="rounded-full bg-[#3f3029] px-4 py-2.5 text-xs font-bold text-white transition-colors hover:bg-[#865a3f] sm:px-5 sm:text-sm">
-        Agendar
-      </a>
-    </div>
-    <nav aria-label="Seções da página" class="site-nav mx-auto flex max-w-7xl gap-1 overflow-x-auto px-4 pb-3 sm:px-8">
-      {site.navigation.map((item, index) => (
-        <a data-nav-link href={item.href} class="site-nav__link" aria-current={index === 0 ? 'location' : undefined}>{item.label}</a>
-      ))}
-    </nav>
+  <header class="smart-header">
+    <SmartNavigation client:load brandName={site.name} items={site.navigation} />
   </header>
 
   <main>
@@ -84,36 +72,5 @@ import { site } from '../config/site'
     <p>Clínica de Paula · Prévia de desenvolvimento</p>
   </footer>
 
-  <script>
-    const navLinks = Array.from(document.querySelectorAll<HTMLAnchorElement>('[data-nav-link]'))
-    const sections = navLinks
-      .map((link) => document.querySelector<HTMLElement>(link.getAttribute('href') ?? ''))
-      .filter((section): section is HTMLElement => section !== null)
 
-    function updateActiveSection() {
-      const scrollPosition = window.scrollY + 190
-      let current = sections[0]?.id
-      for (const section of sections) {
-        if (section.offsetTop <= scrollPosition) current = section.id
-      }
-      for (const link of navLinks) {
-        if (link.getAttribute('href') === `#${current}`) link.setAttribute('aria-current', 'location')
-        else link.removeAttribute('aria-current')
-      }
-    }
-
-    let pending = false
-    function scheduleUpdate() {
-      if (pending) return
-      pending = true
-      requestAnimationFrame(() => {
-        updateActiveSection()
-        pending = false
-      })
-    }
-
-    window.addEventListener('scroll', scheduleUpdate, { passive: true })
-    window.addEventListener('resize', scheduleUpdate)
-    updateActiveSection()
-  </script>
 </BaseLayout>
