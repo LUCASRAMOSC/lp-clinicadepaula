@@ -10,12 +10,13 @@
   --color-sand: #dfceb2;
   --color-brown: #865a3f;
   --color-sage: #7f8374;
+  --header-offset: 8.75rem;
   --font-body: 'Manrope Variable', system-ui, -apple-system, sans-serif;
   --font-display: 'Playfair Display Variable', Georgia, 'Times New Roman', serif;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 9rem; }
+html { scroll-behavior: smooth; scroll-padding-top: var(--header-offset); }
 body {
   min-width: 320px;
   margin: 0;
@@ -31,23 +32,10 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--color-gold); ou
 .font-display { font-family: var(--font-display); }
 .text-muted { color: var(--color-muted); }
 .text-gold { color: var(--color-gold); }
-.section-anchor { scroll-margin-top: 9rem; }
+.section-anchor { scroll-margin-top: var(--header-offset); }
 
-.site-nav { scrollbar-width: none; }
-.site-nav::-webkit-scrollbar { display: none; }
-.site-nav__link {
-  display: inline-flex;
-  flex: 0 0 auto;
-  padding: .65rem 1rem;
-  border-radius: 9999px;
-  font-size: .8rem;
-  font-weight: 700;
-  color: var(--color-muted);
-  transition: background-color 180ms ease, color 180ms ease;
-}
-.site-nav__link[aria-current="location"] {
-  background: var(--color-ink);
-  color: white;
+@media (min-width: 960px) {
+  :root { --header-offset: 6rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
