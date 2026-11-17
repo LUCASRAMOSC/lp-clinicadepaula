@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+/* Base reutilizável: cores por função, independentemente do cliente. */
 :root {
   color-scheme: light;
   --color-canvas: #f8f5f0;
@@ -9,7 +10,29 @@
   --color-gold: #b98539;
   --color-sand: #dfceb2;
   --color-brown: #865a3f;
-  --color-sage: #7f8374;
+  --color-sage: #667765;
+  --color-sage-soft: #e4e9df;
+  --color-gold-light: #f4d99d;
+  --color-gold-deep: #8e602b;
+  /* Metal champagne: brilho na própria superfície, nunca como sombra externa. */
+  --finish-champagne: linear-gradient(112deg, #93642e 0%, #c79a51 25%, #f3d49a 48%, #d6a960 70%, #98652d 100%);
+
+  --color-background: var(--color-canvas);
+  --color-card: var(--color-surface);
+  --color-text: var(--color-ink);
+  --color-text-secondary: var(--color-muted);
+  --color-border: var(--color-sand);
+  --color-action: var(--color-ink);
+  --color-action-hover: var(--color-brown);
+  --color-navigation-active: var(--color-sage);
+  --color-navigation-active-text: #fff;
+  --color-accent: var(--color-gold);
+  --color-highlight: var(--color-sage);
+  --color-subtle-section: #eeece5;
+
+  --radius-card: 1.75rem;
+  --radius-pill: 999px;
+  --content-width: 80rem;
   --header-offset: 8.75rem;
   --font-body: 'Manrope Variable', system-ui, -apple-system, sans-serif;
   --font-display: 'Playfair Display Variable', Georgia, 'Times New Roman', serif;
@@ -20,24 +43,23 @@ html { scroll-behavior: smooth; scroll-padding-top: var(--header-offset); }
 body {
   min-width: 320px;
   margin: 0;
-  background: var(--color-canvas);
-  color: var(--color-ink);
+  background: var(--color-background);
+  color: var(--color-text);
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 button, input, textarea { font: inherit; }
 button, a { -webkit-tap-highlight-color: transparent; }
-a:focus-visible, button:focus-visible { outline: 3px solid var(--color-gold); outline-offset: 4px; }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--color-accent); outline-offset: 4px; }
 .font-display { font-family: var(--font-display); }
-.text-muted { color: var(--color-muted); }
-.text-gold { color: var(--color-gold); }
+.text-muted { color: var(--color-text-secondary); }
+.text-gold { color: var(--color-accent); }
 .section-anchor { scroll-margin-top: var(--header-offset); }
 
 @media (min-width: 960px) {
   :root { --header-offset: 6rem; }
 }
-
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
