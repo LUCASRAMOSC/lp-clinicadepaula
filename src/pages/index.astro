@@ -2,35 +2,18 @@
 import BaseLayout from '../layouts/BaseLayout.astro'
 import { site } from '../config/site'
 import SmartNavigation from '../components/navigation/SmartNavigation'
+import HeroMotion from '../components/interactive/HeroMotion'
+import Experience from '../sections/Experience.astro'
 import '../styles/page.css'
 ---
+
 <BaseLayout title={site.title} description={site.description}>
   <header class="smart-header">
     <SmartNavigation client:load brandName={site.name} items={site.navigation} />
   </header>
 
   <main>
-    <section id="inicio" class="section-anchor page-hero">
-      <div class="page-container page-hero__grid">
-        <div class="page-hero__copy">
-          <p class="section-eyebrow">Clínica de Paula · Bem-estar e estética</p>
-          <h1 class="page-hero__title">Beleza com <span class="page-hero__accent">cuidado</span> em cada detalhe.</h1>
-          <p class="page-hero__description">Um espaço pensado para acolher, orientar e valorizar o que torna cada pessoa única.</p>
-          <div class="page-hero__actions">
-            <a href="#tratamentos" class="button button--primary">Conheça a clínica</a>
-            <a href="#equipe" class="button button--secondary">Nossa equipe</a>
-          </div>
-        </div>
-        <div aria-label="Espaço reservado para fotografia oficial da clínica" class="page-hero__visual">
-          <div aria-hidden="true" class="page-hero__ornament"></div>
-          <div aria-hidden="true" class="page-hero__glow"></div>
-          <div class="page-hero__placeholder">
-            <p class="page-hero__placeholder-title">O seu espaço, a sua história.</p>
-            <p class="page-hero__placeholder-caption">Fotografia oficial em breve</p>
-          </div>
-        </div>
-      </div>
-    </section>
+    <HeroMotion client:load />
 
     <section id="tratamentos" class="section-anchor page-section page-section--surface">
       <div class="page-container">
@@ -55,6 +38,8 @@ import '../styles/page.css'
         </div>
       </div>
     </section>
+
+    <Experience />
 
     <section id="contato" class="section-anchor page-section page-section--contact">
       <div class="page-container">

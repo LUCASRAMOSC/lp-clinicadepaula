@@ -1,0 +1,83 @@
+---
+/**
+ * Hero editorial da Clínica de Paula.
+ * Sem hidratação JS: animações leves em CSS e conteúdo legível sem movimento.
+ * Quando houver fotografia oficial aprovada, passe imageSrc + imageAlt.
+ */
+import '../styles/hero.css'
+
+interface Props {
+  imageSrc?: string
+  imageAlt?: string
+}
+
+const { imageSrc, imageAlt } = Astro.props
+---
+<section id="inicio" class="section-anchor hero" aria-labelledby="hero-title">
+  <div class="page-container hero__inner">
+    <div class="hero__copy">
+      <div class="hero__eyebrow">
+        <span class="hero__eyebrow-line" aria-hidden="true"></span>
+        <span>Clínica de Paula <span class="hero__eyebrow-divider" aria-hidden="true">/</span> Estética & cuidado</span>
+      </div>
+
+      <h1 id="hero-title" class="hero__title">
+        Sua beleza,<br />
+        <em class="hero__title-emphasis">sua essência.</em><br />
+        Nosso cuidado.
+      </h1>
+
+      <p class="hero__description">
+        Um espaço para acolher você, valorizar sua individualidade e tornar cada cuidado uma experiência especial.
+      </p>
+
+      <div class="hero__actions">
+        <a href="#tratamentos" class="button button--primary hero__cta">
+          Explore nossos cuidados
+          <span class="hero__cta-arrow" aria-hidden="true">→</span>
+        </a>
+        <a href="#equipe" class="hero__text-link">Conheça a equipe <span aria-hidden="true">↗</span></a>
+      </div>
+
+      <div class="hero__signature" aria-hidden="true">
+        <span class="hero__signature-rule"></span>
+        <span>Cuidado que valoriza quem você é.</span>
+      </div>
+    </div>
+
+    <div class:list={["hero__visual", { "hero__visual--has-image": Boolean(imageSrc) }]}>
+      {imageSrc && imageAlt ? (
+        <img
+          src={imageSrc}
+          alt={imageAlt}
+          class="hero__photo"
+          width="900"
+          height="1100"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+        />
+      ) : (
+        <div class="hero__editorial" aria-label="Área reservada para fotografia institucional da clínica">
+          <div class="hero__editorial-ring hero__editorial-ring--one" aria-hidden="true"></div>
+          <div class="hero__editorial-ring hero__editorial-ring--two" aria-hidden="true"></div>
+          <div class="hero__editorial-copy">
+            <span class="hero__editorial-overline">Clínica de Paula</span>
+            <span class="hero__editorial-monogram" aria-hidden="true">P</span>
+            <span class="hero__editorial-caption">A beleza está<br />nos detalhes.</span>
+          </div>
+          <span class="hero__editorial-footnote">Imagem institucional em preparação</span>
+        </div>
+      )}
+      <div class="hero__visual-corner" aria-hidden="true"></div>
+      <div class="hero__floating-card" aria-hidden="true">
+        <span class="hero__floating-mark"></span>
+        <span>Beleza singular<br /><strong>Cuidado especial</strong></span>
+      </div>
+    </div>
+  </div>
+  <div class="page-container hero__bottom" aria-hidden="true">
+    <span class="hero__bottom-index">01 <span>—</span> 04</span>
+    <span class="hero__scroll">Role para explorar <span class="hero__scroll-arrow">↓</span></span>
+  </div>
+</section>
