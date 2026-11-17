@@ -1,37 +1,20 @@
-/* Seções da landing: classes semânticas, sem cores soltas no markup. */
+/* Seções internas da landing: Hero possui sua própria folha hero.css. */
 .page-container { width: 100%; max-width: var(--content-width); margin-inline: auto; }
-.page-hero { overflow: hidden; background: linear-gradient(165deg, #fffefa 0%, var(--color-background) 72%); }
-.page-hero__grid { display: grid; gap: 2.5rem; padding: 4rem 1.25rem; }
-.page-hero__copy { max-width: 42rem; }
 .section-eyebrow {
   margin: 0 0 1.5rem;
-  color: var(--color-brand-brown, var(--color-brown));
+  color: var(--color-brown);
   font-size: .6875rem;
   font-weight: 750;
   letter-spacing: .25em;
   text-transform: uppercase;
 }
- .page-hero .section-eyebrow { color: var(--color-sage); }
-.page-hero .section-eyebrow::before { content: ""; display: inline-block; width: 26px; height: 2px; margin-right: .7rem; vertical-align: middle; background: var(--finish-champagne); }
-.page-hero__title, .section-title, .team-card__name, .page-hero__placeholder-title { font-family: var(--font-display); font-weight: 400; }
-.page-hero__title { margin: 0; font-size: clamp(3.2rem, 12vw, 6rem); line-height: 1.06; letter-spacing: -.045em; }
-/* Metalizado restrito ao lettering editorial, sem glow ou sombra. */
-.page-hero__accent { color: var(--color-gold-deep); background: var(--finish-champagne); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
-.page-hero__description { margin: 1.75rem 0 0; max-width: 32rem; font-size: 1rem; line-height: 2; color: var(--color-text-secondary); }
-.page-hero__actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 2.25rem; }
+.section-title, .team-card__name { font-family: var(--font-display); font-weight: 400; }
 .button { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; border-radius: var(--radius-pill); padding: .875rem 1.5rem; text-decoration: none; font-size: .875rem; font-weight: 700; transition: background-color .2s ease, color .2s ease; }
 .button--primary { color: white; background: var(--color-action); }
 .button--primary:hover { background: var(--color-action-hover); }
 .button--secondary { color: var(--color-text); border: 1px solid var(--color-border); }
 .button--secondary:hover { background: var(--color-card); }
- .page-hero__visual { position: relative; isolation: isolate; display: flex; aspect-ratio: 4/5; align-items: center; justify-content: center; overflow: hidden; border-radius: 2rem; background: linear-gradient(145deg, #e8e6dc 0%, #d5dcca 100%); border: 1px solid #d4c8b0; }
-.page-hero__ornament { position: absolute; z-index: -1; top: -4rem; right: -3rem; height: 16rem; width: 16rem; border-radius: 50%; border: 1px solid rgb(255 255 255 / 70%); }
-.page-hero__glow { position: absolute; z-index: -1; bottom: -5rem; left: -4rem; width: 20rem; height: 20rem; border-radius: 50%; background: color-mix(in srgb, var(--color-gold) 11%, transparent); filter: blur(60px); }
-.page-hero__placeholder { max-width: 15rem; padding: 0 2rem; text-align: center; }
-.page-hero__placeholder-title { margin: 0; font-size: 2.25rem; line-height: 1.25; color: var(--color-ink); }
-.page-hero__placeholder-caption { margin: 1.25rem 0 0; color: var(--color-text-secondary); font-size: .75rem; font-weight: 650; letter-spacing: .16em; text-transform: uppercase; }
 .page-section { padding: 5rem 1.25rem; }
-/* Intervalo editorial quente: contraste sem um bloco verde pesado. */
 .page-section--surface { background: var(--color-subtle-section); border-block: 1px solid #e1daca; }
 .page-section--surface .page-container { border-left: 3px solid var(--color-gold); padding-left: clamp(1rem, 3vw, 2rem); }
 .page-section--surface .section-eyebrow { color: #5a6f5b; }
@@ -39,9 +22,7 @@
 .section-title--wide { max-width: 52rem; }
 .section-description { max-width: 36rem; margin: 1.25rem 0 0; color: var(--color-text-secondary); line-height: 2; }
 .team-grid { display: grid; gap: 1rem; margin-top: 2.5rem; }
- .team-card { padding: 1.75rem; border: 1px solid #e0d7c8; border-top: 3px solid transparent; border-image: var(--finish-champagne) 1; border-radius: var(--radius-card); background: var(--color-card); }
-/* Border image doesn't preserve radius; metallic detail lives in the inner accent instead. */
-.team-card { border-image: none; border-top-color: #c49a59; }
+.team-card { padding: 1.75rem; border: 1px solid #e0d7c8; border-top: 3px solid #c49a59; border-radius: var(--radius-card); background: var(--color-card); }
 .team-card__accent { width: 3rem; height: .2rem; margin-bottom: 1.75rem; border-radius: 999px; background: var(--finish-champagne); }
 .team-card__name { margin: 0; font-size: 1.875rem; }
 .team-card__description { margin: .75rem 0 0; font-size: .875rem; color: var(--color-text-secondary); }
@@ -51,20 +32,10 @@
 .page-footer { padding: 2rem 1.25rem; text-align: center; font-size: .75rem; color: var(--color-text-secondary); }
 .page-footer p { margin: 0; }
 @media (min-width: 640px) {
-  .page-hero__grid { padding-inline: 2rem; }
-  .page-hero__description { font-size: 1.125rem; }
-  .page-hero__visual { aspect-ratio: 5/4; }
   .page-section { padding-inline: 2rem; }
   .section-title { font-size: 3rem; }
   .team-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .team-card { padding: 2.5rem; }
 }
-@media (min-width: 768px) {
-  .page-hero__grid { padding-block: 6rem; }
-  .page-section { padding-block: 7rem; }
-}
-@media (min-width: 1024px) {
-  .page-hero__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: center; gap: 3.5rem; }
-  .page-hero__visual { aspect-ratio: 4/5; }
-}
+@media (min-width: 768px) { .page-section { padding-block: 7rem; } }
 @media (prefers-reduced-motion: reduce) { .button { transition: none; } }

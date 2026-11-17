@@ -8,6 +8,7 @@ export const site = {
     { label: 'Início', href: '#inicio' },
     { label: 'Tratamentos', href: '#tratamentos' },
     { label: 'Equipe', href: '#equipe' },
+    { label: 'Experiência', href: '#experiencia' },
     { label: 'Contato', href: '#contato' },
   ],
   professionals: [
