@@ -12,8 +12,14 @@
 
   /* Topbar: espresso profundo, contrastando com o fundo geral #342821. */
   --theme-header: #211713;
-  --theme-header-rule: #765849;
-  --theme-nav-inactive: #f4f5ed;
+  --theme-header-rule: rgb(241 217 168 / 28%);
+  --theme-nav-inactive: #f8f3ea;
+  --theme-nav-hover: rgb(255 253 248 / 9%);
+  --theme-nav-hover-border: rgb(247 228 186 / 20%);
+  --theme-nav-active: #f5e3c1;
+  --theme-nav-active-ink: #35251e;
+  --theme-header-subtitle: #e9d6b7;
+  --theme-header-contact-hover: #fff3d9;
 
   /* Superfícies, nenhum card com fundo marrom. */
   --theme-ivory: #fffdf8;
@@ -43,8 +49,8 @@
   --color-action-hover: #ffffff;
   --color-card: var(--theme-ivory);
   --color-surface: var(--theme-ivory);
-  --color-navigation-active: #c4dfc8;
-  --color-navigation-active-text: var(--theme-pine-deep);
+  --color-navigation-active: var(--theme-nav-active);
+  --color-navigation-active-text: var(--theme-nav-active-ink);
   --color-highlight: var(--theme-sage-light);
   --color-accent: var(--theme-champagne);
   --color-subtle-section: var(--theme-cocoa);
