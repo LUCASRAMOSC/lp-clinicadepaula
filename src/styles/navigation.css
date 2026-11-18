@@ -1,52 +1,64 @@
-/* Smart Navigation — mobile-first, rolagem horizontal nativa. */
+/* Smart Navigation — identidade e interação mobile-first. */
 .smart-header {
   position: sticky;
   top: 0;
   z-index: 50;
   isolation: isolate;
-  border-bottom: 1px solid color-mix(in srgb, var(--color-border) 55%, transparent);
-  background: color-mix(in srgb, var(--color-background) 97%, transparent);
-  -webkit-backdrop-filter: blur(18px);
-  backdrop-filter: blur(18px);
+  color-scheme: dark;
+  border-bottom: 1px solid var(--theme-header-rule);
+  background: var(--theme-header);
+  box-shadow: 0 8px 24px rgb(15 30 24 / 12%);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
 }
 .smart-header astro-island { display: block; }
 .smart-header__content { position: relative; }
 .smart-header__top {
-  min-height: 70px;
-  margin-inline: auto;
-  padding: 10px 20px;
-  max-width: var(--content-width);
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
+  min-height: 70px;
+  max-width: var(--content-width);
+  margin-inline: auto;
+  padding: 10px 20px;
 }
 .smart-header__brand {
-  min-width: 0;
-  flex-shrink: 1;
   display: inline-flex;
+  flex: 0 1 auto;
   flex-direction: column;
-  gap: 2px;
+  min-width: 0;
+  gap: 3px;
   text-decoration: none;
-  color: var(--color-text);
 }
 .smart-header__brand-name {
+  color: var(--theme-gold-solid);
   font-family: var(--font-display);
-  font-size: clamp(1.25rem, 4.8vw, 1.65rem);
+  font-size: clamp(1.16rem, 4.5vw, 1.65rem);
   font-weight: 550;
-  line-height: 1.05;
+  line-height: 1.08;
   letter-spacing: -.035em;
   white-space: nowrap;
+  /* O reflexo vive no lettering, sem sombras ou brilho externo. */
+  background-image: var(--finish-champagne);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 .smart-header__brand-subtitle {
-  color: var(--color-highlight);
-  font-size: .58rem;
-  font-weight: 700;
-  line-height: 1.3;
+  color: var(--theme-sage-light);
+  font-size: clamp(.48rem, 1.7vw, .60rem);
+  font-weight: 750;
+  line-height: 1.4;
   text-transform: uppercase;
-  letter-spacing: .14em;
+  letter-spacing: .105em;
 }
-.smart-header__actions { display: flex; gap: 8px; align-items: center; flex-shrink: 0; }
+.smart-header__actions {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 8px;
+}
 .smart-header__contact,
 .smart-header__menu-toggle {
   display: inline-flex;
@@ -54,16 +66,28 @@
   justify-content: center;
   width: 44px;
   height: 44px;
+  border: 1px solid var(--theme-header-rule);
   border-radius: var(--radius-pill);
-  border: 1px solid var(--color-border);
   text-decoration: none;
-  transition: background-color .2s ease, transform .2s ease;
+  transition: background-color .2s ease, border-color .2s ease, transform .2s ease;
 }
-.smart-header__contact { background: var(--color-action); color: #fff; border-color: var(--color-action); }
+.smart-header__contact {
+  background: var(--theme-ivory);
+  border-color: var(--theme-ivory);
+  color: var(--theme-pine-deep);
+}
 .smart-header__contact span { display: none; }
-.smart-header__menu-toggle { background: var(--color-card); color: var(--color-text); cursor: pointer; }
+.smart-header__menu-toggle {
+  background: var(--theme-sage-pale);
+  border-color: var(--theme-sage-pale);
+  color: var(--theme-pine-deep);
+  cursor: pointer;
+}
+.smart-header__contact:hover { background: #fff; border-color: #fff; }
+.smart-header__menu-toggle:hover { background: #e9f2e9; border-color: #e9f2e9; }
 .smart-header__contact:active,
 .smart-header__menu-toggle:active { transform: scale(.97); }
+
 .smart-nav { display: flex; align-items: center; gap: 5px; }
 .smart-nav--desktop { display: none; }
 .smart-nav--mobile {
@@ -82,12 +106,12 @@
   position: relative;
   display: inline-flex;
   flex: 0 0 auto;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   min-height: 36px;
   padding: 8px 15px;
   border-radius: var(--radius-pill);
-  color: var(--color-text-secondary);
+  color: var(--theme-nav-inactive);
   font-size: .79rem;
   line-height: 1.2;
   font-weight: 700;
@@ -96,36 +120,39 @@
   -webkit-tap-highlight-color: transparent;
   transition: color .2s ease;
 }
-.smart-nav__pill:hover { color: var(--color-text); }
+.smart-nav__pill:hover { color: #fff; }
 .smart-nav__pill.is-active { color: var(--color-navigation-active-text); }
 .smart-nav__indicator {
   position: absolute;
-  inset: 0;
   z-index: 0;
+  inset: 0;
   border-radius: inherit;
   background: var(--color-navigation-active);
 }
 .smart-nav__pill-label { position: relative; z-index: 1; white-space: nowrap; }
+
 .smart-header__menu-panel {
   position: absolute;
+  z-index: 60;
   top: calc(100% + 8px);
   right: 12px;
   left: 12px;
-  z-index: 60;
   padding: 16px;
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--theme-card-border);
   border-radius: 24px;
-  background: var(--color-card);
-  box-shadow: 0 22px 70px rgb(63 48 41 / 16%);
+  background: var(--theme-ivory);
+  color: var(--theme-pine-deep);
+  color-scheme: light;
+  box-shadow: 0 22px 65px rgb(10 21 18 / 22%);
 }
 .smart-header__menu-eyebrow {
   display: block;
   padding: 5px 9px 10px;
-  color: var(--color-gold-deep);
+  color: var(--theme-pine);
   font-size: .66rem;
+  font-weight: 800;
   letter-spacing: .15em;
   text-transform: uppercase;
-  font-weight: 700;
 }
 .smart-header__menu-panel nav { display: grid; gap: 3px; }
 .smart-header__menu-panel nav a {
@@ -136,15 +163,16 @@
   min-height: 50px;
   padding: 10px 14px;
   border-radius: 12px;
-  text-decoration: none;
-  color: var(--color-text);
+  color: var(--theme-pine-deep);
   font-size: .95rem;
   font-weight: 650;
+  text-decoration: none;
   transition: background-color .2s ease;
 }
 .smart-header__menu-panel nav a:hover,
-.smart-header__menu-panel nav a[aria-current="location"] { background: var(--color-background); }
-.smart-header__menu-panel nav svg { color: var(--color-accent); }
+.smart-header__menu-panel nav a[aria-current="location"] { background: var(--theme-sage-pale); }
+.smart-header__menu-panel nav svg { color: var(--theme-pine); }
+
 @media (min-width: 960px) {
   .smart-header__top { min-height: 78px; padding: 12px 32px; }
   .smart-nav--desktop { display: flex; gap: 4px; }
@@ -152,7 +180,6 @@
   .smart-nav__pill { min-height: 39px; }
   .smart-header__contact { width: auto; height: 44px; padding: 0 20px; gap: 9px; font-size: .8rem; font-weight: 750; }
   .smart-header__contact span { display: inline; }
-  .smart-header__contact:hover { background: var(--color-action); }
   .smart-header__menu-panel { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {

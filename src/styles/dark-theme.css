@@ -1,0 +1,231 @@
+/* Clínica de Paula — Espresso & Champagne / contraste V3.
+   Marrom fica no cenário; cartões e controles ficam marfim, branco, sálvia e blush.
+   Importado depois de global.css em BaseLayout.astro. */
+:root {
+  color-scheme: dark;
+
+  /* Fundos: continuam escuros e editoriais. */
+  --theme-espresso: #342821;
+  --theme-cocoa: #49372e;
+  --theme-walnut: #402e27;
+  --theme-deep: #281e19;
+
+  /* Topbar: espresso profundo, contrastando com o fundo geral #342821. */
+  --theme-header: #211713;
+  --theme-header-rule: #765849;
+  --theme-nav-inactive: #f4f5ed;
+
+  /* Superfícies, nenhum card com fundo marrom. */
+  --theme-ivory: #fffdf8;
+  --theme-cream: #f8f5ed;
+  --theme-sage-pale: #dbe8db;
+  --theme-sage-light: #c9dcc7;
+  --theme-sage: #9cb79f;
+  --theme-pine: #3b6857;
+  --theme-pine-deep: #233b33;
+  --theme-blush: #eddfd9;
+  --theme-card-border: #d7dfd4;
+
+  /* Dourado champagne claro — reflexo metálico no próprio material. */
+  --theme-gold-solid: #f1d9a8;
+  --theme-champagne: #f7e4ba;
+  --theme-gold-bright: #fff0ca;
+  --finish-champagne: linear-gradient(112deg,
+    #d6b47b 0%, #fff2d4 24%, #f0d59f 45%,
+    #fff8e8 58%, #e9c98b 78%, #d6b47b 100%);
+
+  /* Tokens que alimentam os componentes existentes. */
+  --color-background: var(--theme-espresso);
+  --color-text: #fffdf9;
+  --color-text-secondary: #e5dbd1;
+  --color-border: #8b8075;
+  --color-action: var(--theme-ivory);
+  --color-action-hover: #ffffff;
+  --color-card: var(--theme-ivory);
+  --color-surface: var(--theme-ivory);
+  --color-navigation-active: #c4dfc8;
+  --color-navigation-active-text: var(--theme-pine-deep);
+  --color-highlight: var(--theme-sage-light);
+  --color-accent: var(--theme-champagne);
+  --color-subtle-section: var(--theme-cocoa);
+}
+
+/* Cabeçalho com identidade própria. O componente lê os tokens acima. */
+body .smart-header {
+  border-bottom-color: var(--theme-header-rule);
+  background: var(--theme-header);
+  box-shadow: 0 8px 24px rgb(17 10 8 / 20%);
+}
+
+/* Moldura do hero em espresso, mas nenhum slide/card marrom. */
+body .motion-hero {
+  background: var(--theme-espresso);
+  border-bottom: 1px solid rgb(255 247 229 / 19%);
+}
+body .motion-hero__eyebrow { color: var(--theme-sage-light); }
+body .motion-hero__intro-note { color: #f2e6d9; }
+body .motion-hero__metal-line { width: 32px; height: 3px; }
+
+/* 5 cartões: pinho, sálvia, branco, névoa verde e blush — zero marrom. */
+body .motion-hero__slide--ink { background: #31594c; color: #fffefa; }
+body .motion-hero__slide--sage { background: #718e78; color: #fffefa; }
+body .motion-hero__slide--cream { background: #fffdf8; color: var(--theme-pine-deep); }
+body .motion-hero__slide--cocoa { background: #d9e7dd; color: var(--theme-pine-deep); }
+body .motion-hero__slide--pearl { background: var(--theme-blush); color: var(--theme-pine-deep); }
+
+body .motion-hero__slide--ink .motion-hero__kicker,
+body .motion-hero__slide--sage .motion-hero__kicker { color: #fff1c9; }
+body .motion-hero__slide--cream .motion-hero__kicker,
+body .motion-hero__slide--cocoa .motion-hero__kicker,
+body .motion-hero__slide--pearl .motion-hero__kicker { color: var(--theme-pine); }
+
+body .motion-hero__slide--ink .motion-hero__title em,
+body .motion-hero__slide--sage .motion-hero__title em {
+  color: var(--theme-gold-bright);
+  background: var(--finish-champagne);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+body .motion-hero__slide--cream .motion-hero__title em,
+body .motion-hero__slide--cocoa .motion-hero__title em,
+body .motion-hero__slide--pearl .motion-hero__title em {
+  color: var(--theme-pine);
+  background: none;
+  -webkit-text-fill-color: currentColor;
+}
+
+body .motion-hero__slide--ink .motion-hero__description,
+body .motion-hero__slide--sage .motion-hero__description { color: #fffefa; }
+body .motion-hero__slide--cream .motion-hero__description,
+body .motion-hero__slide--cocoa .motion-hero__description,
+body .motion-hero__slide--pearl .motion-hero__description { color: #365247; }
+body .motion-hero__slide--ink .motion-hero__cta,
+body .motion-hero__slide--sage .motion-hero__cta {
+  background: var(--theme-ivory);
+  color: var(--theme-pine-deep);
+}
+body .motion-hero__slide--cream .motion-hero__cta,
+body .motion-hero__slide--cocoa .motion-hero__cta,
+body .motion-hero__slide--pearl .motion-hero__cta {
+  background: var(--theme-pine-deep);
+  color: #fffefa;
+}
+body .motion-hero__slide--cream .motion-hero__cta:hover,
+body .motion-hero__slide--cocoa .motion-hero__cta:hover,
+body .motion-hero__slide--pearl .motion-hero__cta:hover { background: var(--theme-pine); }
+body .motion-hero__slide--cream .motion-hero__cta svg,
+body .motion-hero__slide--cocoa .motion-hero__cta svg,
+body .motion-hero__slide--pearl .motion-hero__cta svg { color: var(--theme-gold-bright); }
+body .motion-hero__slide--ink .motion-hero__cta svg,
+body .motion-hero__slide--sage .motion-hero__cta svg { color: var(--theme-pine); }
+
+/* Ornamentos: as versões claras recebem verde, as escuras champagne. */
+body .motion-hero__slide--ink .motion-hero__art,
+body .motion-hero__slide--sage .motion-hero__art { border-color: rgb(255 241 201 / 53%); }
+body .motion-hero__slide--ink .motion-hero__art-ring,
+body .motion-hero__slide--sage .motion-hero__art-ring { border-color: rgb(236 247 232 / 38%); }
+body .motion-hero__slide--ink .motion-hero__art-mark,
+body .motion-hero__slide--sage .motion-hero__art-mark { color: rgb(255 241 201 / 53%); }
+body .motion-hero__slide--cream .motion-hero__art,
+body .motion-hero__slide--cocoa .motion-hero__art,
+body .motion-hero__slide--pearl .motion-hero__art { border-color: rgb(59 104 87 / 34%); }
+body .motion-hero__slide--cream .motion-hero__art-ring,
+body .motion-hero__slide--cocoa .motion-hero__art-ring,
+body .motion-hero__slide--pearl .motion-hero__art-ring { border-color: rgb(59 104 87 / 23%); }
+body .motion-hero__slide--cream .motion-hero__art-mark,
+body .motion-hero__slide--cocoa .motion-hero__art-mark,
+body .motion-hero__slide--pearl .motion-hero__art-mark { color: rgb(59 104 87 / 29%); }
+
+/* Com imagens futuras, preservar textos claros independentemente da variante. */
+body .motion-hero__slide.has-image { color: #fffefa; }
+body .motion-hero__slide.has-image .motion-hero__title em {
+  color: var(--theme-gold-bright);
+  background: none;
+  -webkit-text-fill-color: currentColor;
+}
+body .motion-hero__slide.has-image .motion-hero__kicker { color: #fff1c9; }
+body .motion-hero__slide.has-image .motion-hero__description { color: #fffefa; }
+body .motion-hero__slide.has-image .motion-hero__cta { background: var(--theme-ivory); color: var(--theme-pine-deep); }
+body .motion-hero__slide.has-image .motion-hero__cta svg { color: var(--theme-pine); }
+
+/* Controles fora dos slides com contraste nítido. */
+body .motion-hero__progress-button span { background: #a7b9a7; }
+body .motion-hero__progress-button.is-current span { background: var(--finish-champagne); }
+body .motion-hero__count { color: #fffdfa; }
+body .motion-hero__count span { color: var(--theme-sage-light); }
+body .motion-hero__autoplay-toggle {
+  background: var(--theme-ivory);
+  border-color: var(--theme-ivory);
+  color: var(--theme-pine-deep);
+}
+body .motion-hero__autoplay-toggle:hover { background: #fff; border-color: #fff; }
+
+/* Seções com cenário marrom e tipografia clara. */
+body .page-section,
+body .experience-section { color: #fffefa; }
+body .page-section--surface {
+  background: var(--theme-cocoa);
+  border-block: 1px solid rgb(255 241 201 / 17%);
+}
+body .page-section--surface .page-container { border-left-color: var(--theme-gold-solid); }
+body #equipe { background: var(--theme-espresso); }
+body .experience-section { background: var(--theme-walnut); border-top-color: rgb(255 241 201 / 19%); }
+body .page-section--contact { background: var(--theme-deep); border-top: 1px solid rgb(255 241 201 / 21%); }
+body .page-section .section-title,
+body .experience-section .section-title { color: #fffefa; }
+body .section-eyebrow { color: var(--theme-sage-light); }
+body .page-section .section-description,
+body .experience-section .section-description { color: var(--color-text-secondary); }
+body .page-section--contact .section-eyebrow { color: var(--theme-champagne); }
+
+/* Equipe: cartões brancos, sem marrom; títulos e barras verdes. */
+body .team-card {
+  color-scheme: light;
+  background: var(--theme-ivory);
+  border: 1px solid var(--theme-card-border);
+  border-top: 3px solid var(--theme-sage);
+  color: var(--theme-pine-deep);
+  box-shadow: 0 10px 30px rgb(10 25 18 / 9%);
+}
+body .team-card__accent {
+  width: 3.4rem;
+  height: 4px;
+  background: var(--finish-champagne);
+}
+body .team-card__name { color: var(--theme-pine-deep); }
+body .team-card__description { color: #456357; }
+
+/* Experiência: área de futura fotografia com branco e sálvia suave. */
+body .experience-section__link {
+  color: var(--theme-ivory);
+  border-bottom-color: var(--theme-champagne);
+}
+body .experience-section__link svg { color: var(--theme-sage-light); }
+body .experience-section__link:hover { color: #fff; }
+body .experience-section__visual {
+  color-scheme: light;
+  border-color: var(--theme-card-border);
+  background: linear-gradient(125deg, #fffdf8 0%, #e7f0e8 63%, #d2e1d5 100%);
+}
+body .experience-section__visual-kicker { color: var(--theme-pine); }
+body .experience-section__visual-caption { color: var(--theme-pine-deep); }
+body .experience-section__visual-edge { background: var(--finish-champagne); }
+
+body .page-footer {
+  background: var(--theme-deep);
+  border-top: 1px solid rgb(255 241 201 / 15%);
+  color: #e4dbce;
+}
+
+/* Foco visível e menos animação para quem prefere movimento reduzido. */
+body a:focus-visible,
+body button:focus-visible { outline-color: var(--theme-gold-bright); }
+body .team-card a:focus-visible,
+body .smart-header__menu-panel a:focus-visible { outline-color: var(--theme-pine); }
+@media (max-width: 639px) {
+  body .page-section--surface .page-container { border-left-width: 2px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  body .motion-hero__cta { transition: none; }
+}
