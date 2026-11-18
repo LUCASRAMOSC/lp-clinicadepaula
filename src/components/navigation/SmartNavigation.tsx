@@ -10,6 +10,7 @@ interface NavigationItem {
 
 interface SmartNavigationProps {
   brandName: string
+  brandSubtitle: string
   items: readonly NavigationItem[]
 }
 
@@ -17,7 +18,7 @@ interface SmartNavigationProps {
  * Cabeçalho interativo. O <header> sticky fica no Astro; apenas os controles
  * precisam de hidratação React. Os links seguem funcionando sem JavaScript.
  */
-export default function SmartNavigation({ brandName, items }: SmartNavigationProps) {
+export default function SmartNavigation({ brandName, brandSubtitle, items }: SmartNavigationProps) {
   const firstId = items[0]?.href.slice(1) ?? 'inicio'
   const [activeId, setActiveId] = useState(firstId)
   const [menuOpen, setMenuOpen] = useState(false)
@@ -162,7 +163,7 @@ export default function SmartNavigation({ brandName, items }: SmartNavigationPro
       <div className="smart-header__top">
         <a className="smart-header__brand" href="#inicio" onClick={() => handleNavigation('#inicio')}>
           <span className="smart-header__brand-name">{brandName}</span>
-          <span className="smart-header__brand-subtitle">Estética e cuidado</span>
+          <span className="smart-header__brand-subtitle">{brandSubtitle}</span>
         </a>
 
         <nav className="smart-nav smart-nav--desktop" aria-label="Seções principais">

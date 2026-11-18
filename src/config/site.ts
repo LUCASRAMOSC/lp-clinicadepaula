@@ -1,7 +1,8 @@
 /** Dados de marca e navegação: únicos pontos de alteração por cliente. */
 export const site = {
   name: 'Clínica de Paula',
-  title: 'Clínica de Paula | Estética e cuidado',
+  tagline: 'Estética facial e corporal',
+  title: 'Clínica de Paula | Estética facial e corporal',
   description:
     'Conheça a Clínica de Paula, nossa equipe e nossas possibilidades de cuidado. Site em preparação.',
   navigation: [
