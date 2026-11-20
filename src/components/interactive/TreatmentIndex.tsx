@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
-import { ArrowRight, ArrowUpRight, Minus, Plus } from 'lucide-react'
+import { ArrowRight, ArrowUpRight, ChevronDown } from 'lucide-react'
 import { treatments, type TreatmentItem } from '../../data/treatments'
 import '../../styles/treatment-index.css'
 
@@ -13,7 +13,7 @@ function TreatmentMedia({ item, compact = false }: TreatmentMediaProps) {
   return (
     <div className={`treatment-index__media treatment-index__media--${item.variant}${compact ? ' treatment-index__media--compact' : ''}`}>
       {item.image ? (
-        <picture className="treatment-index__picture">
+        <picture className={`treatment-index__picture treatment-index__picture--${item.image.position ?? 'center'}`}>
           {item.image.mobileSrc && <source media="(max-width: 899px)" srcSet={item.image.mobileSrc} />}
           <img src={item.image.src} alt={item.image.alt} loading="lazy" decoding="async" />
         </picture>
@@ -22,7 +22,6 @@ function TreatmentMedia({ item, compact = false }: TreatmentMediaProps) {
           <span className="treatment-index__art-brand">CLÍNICA DE PAULA</span>
           <span className="treatment-index__art-rule" />
           <span className="treatment-index__art-number">{item.number}</span>
-          <span className="treatment-index__art-caption">FOTOGRAFIA OFICIAL EM PREPARAÇÃO</span>
         </div>
       )}
     </div>
@@ -35,9 +34,9 @@ function TreatmentMedia({ item, compact = false }: TreatmentMediaProps) {
  * atualiza um painel lateral de prévia, sem deslocar o usuário.
  */
 export default function TreatmentIndex() {
-  const [activeId, setActiveId] = useState(treatments[0]?.id ?? '')
+  const [activeId, setActiveId] = useState<string | null>(treatments[0]?.id ?? null)
   const reducedMotion = useReducedMotion()
-  const activeItem = treatments.find((item) => item.id === activeId) ?? treatments[0]
+  const activeItem = treatments.find((item) => item.id === activeId) ?? null
   const transition = { duration: reducedMotion ? 0 : 0.3, ease: [0.22, 1, 0.36, 1] as const }
 
   return (
@@ -46,7 +45,7 @@ export default function TreatmentIndex() {
         <div className="treatment-index__heading">
           <p className="treatment-index__eyebrow"><span aria-hidden="true" /> TRATAMENTOS</p>
           <h2 id="treatment-index-title">O cuidado começa <em>na escolha.</em></h2>
-          <p>Explore nossas áreas de cuidado. Os procedimentos específicos serão incluídos após a confirmação da clínica.</p>
+          <p>Conheça nossas áreas de cuidado e descubra por onde começar.</p>
         </div>
 
         <div className="treatment-index__layout">
@@ -60,7 +59,7 @@ export default function TreatmentIndex() {
                     className="treatment-index__trigger"
                     aria-expanded={selected}
                     aria-controls={`treatment-inline-${item.id}`}
-                    onClick={() => setActiveId(item.id)}
+                    onClick={() => setActiveId((current) => current === item.id ? null : item.id)}
                   >
                     <span className="treatment-index__number">{item.number}</span>
                     <span className="treatment-index__item-text">
@@ -68,7 +67,7 @@ export default function TreatmentIndex() {
                       <span className="treatment-index__item-teaser">{item.teaser}</span>
                     </span>
                     <span className="treatment-index__item-icon" aria-hidden="true">
-                      {selected ? <Minus size={20} strokeWidth={1.5} /> : <Plus size={20} strokeWidth={1.5} />}
+                      <ChevronDown size={19} strokeWidth={1.7} />
                     </span>
                   </button>
                   <motion.div
@@ -93,7 +92,7 @@ export default function TreatmentIndex() {
 
           <div className="treatment-index__desktop-preview" aria-live="polite" aria-atomic="true">
             <AnimatePresence mode="wait" initial={false}>
-              {activeItem && (
+              {activeItem ? (
                 <motion.article
                   key={activeItem.id}
                   className="treatment-index__preview-card"
@@ -110,11 +109,27 @@ export default function TreatmentIndex() {
                     <a className="treatment-index__action" href="#contato">Entre em contato <ArrowRight size={17} strokeWidth={1.65} aria-hidden="true" /></a>
                   </div>
                 </motion.article>
+              ) : (
+                <motion.div
+                  key="overview"
+                  className="treatment-index__overview"
+                  initial={reducedMotion ? false : { opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={reducedMotion ? { opacity: 0 } : { opacity: 0, y: -8 }}
+                  transition={transition}
+                >
+                  <span className="treatment-index__overview-eyebrow">CLÍNICA DE PAULA / CUIDADOS</span>
+                  <span className="treatment-index__overview-mark" aria-hidden="true">C</span>
+                  <h3>Um cuidado que começa por você.</h3>
+                  <p>Explore as áreas acima ou converse com nossa equipe para conhecer os atendimentos disponíveis.</p>
+                  <a className="treatment-index__action" href="#contato">
+                    Entre em contato <ArrowRight size={17} strokeWidth={1.65} aria-hidden="true" />
+                  </a>
+                </motion.div>
               )}
             </AnimatePresence>
           </div>
         </div>
-        <p className="treatment-index__notice">Conteúdo em preparação. Os tratamentos e as imagens serão validados com a equipe da clínica.</p>
       </div>
     </section>
   )
