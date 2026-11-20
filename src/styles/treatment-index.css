@@ -164,3 +164,78 @@
 @media (prefers-reduced-motion: reduce) {
   .treatment-index__item-title, .treatment-index__item-icon, .treatment-index__item-icon svg, .treatment-index__action { transition: none; }
 }
+
+/* Outros tratamentos: continuação da mesma seção, sem outro carrossel ou cards. */
+.treatment-index__more {
+  /* O último item do índice já fornece o divisor. */
+  margin-top: clamp(3.25rem, 6vw, 5.5rem);
+}
+.treatment-index__more-intro { display: grid; gap: 1rem; margin-bottom: clamp(2rem, 4vw, 3.5rem); }
+.treatment-index__more-eyebrow {
+  margin: 0 0 1rem;
+  color: var(--index-champagne);
+  font-size: .66rem;
+  font-weight: 800;
+  letter-spacing: .19em;
+}
+.treatment-index__more h3 {
+  margin: 0;
+  font: 400 clamp(2.3rem, 5vw, 3.8rem)/1.12 var(--font-display);
+  letter-spacing: -.035em;
+  text-wrap: balance;
+}
+.treatment-index__more h3 em { color: var(--index-champagne); font-weight: 400; }
+.treatment-index__more-description {
+  max-width: 43ch;
+  margin: 0;
+  color: #e8dacb;
+  font-size: .87rem;
+  line-height: 1.8;
+}
+.treatment-index__more-grid { display: grid; gap: 1.75rem; }
+.treatment-index__more-group { padding-block: .25rem; }
+.treatment-index__more-group + .treatment-index__more-group {
+  padding-top: 1.75rem;
+  border-top: 1px solid rgb(255 241 201 / 18%);
+}
+.treatment-index__more-group h4 {
+  margin: 0 0 1.15rem;
+  color: var(--index-champagne);
+  font: 400 clamp(1.45rem, 3vw, 1.95rem)/1.2 var(--font-display);
+}
+.treatment-index__more-group ul { margin: 0; padding: 0; list-style: none; }
+.treatment-index__more-group li {
+  padding: .7rem 0;
+  color: var(--index-ivory);
+  font-size: clamp(.88rem, 1.3vw, 1rem);
+  line-height: 1.5;
+}
+.treatment-index__more-group li + li { border-top: 1px solid rgb(255 241 201 / 12%); }
+.treatment-index__more-finish {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: clamp(2rem, 4vw, 3.5rem) 0 0;
+  color: var(--index-champagne);
+  font: italic 400 clamp(1.45rem, 3vw, 2rem)/1.25 var(--font-display);
+}
+.treatment-index__more-finish span {
+  display: block;
+  flex: 0 0 56px;
+  height: 2px;
+  background: var(--finish-champagne);
+}
+@media (min-width: 760px) {
+  .treatment-index__more-intro {
+    grid-template-columns: 1fr minmax(0, .75fr);
+    align-items: end;
+    gap: 3rem;
+  }
+  .treatment-index__more-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(2rem, 6vw, 5rem); }
+  .treatment-index__more-group + .treatment-index__more-group {
+    padding-top: .25rem;
+    padding-left: clamp(2rem, 4vw, 4rem);
+    border-top: 0;
+    border-left: 1px solid rgb(255 241 201 / 22%);
+  }
+}
