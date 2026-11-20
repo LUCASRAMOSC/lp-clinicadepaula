@@ -30,14 +30,19 @@ export interface TreatmentItem {
 
 export const treatments: readonly TreatmentItem[] = [
   {
-    id: 'facial',
+    id: 'botox',
     number: '01',
-    eyebrow: 'ÁREA DE CUIDADO',
-    title: 'Estética facial',
-    teaser: 'A beleza de cada detalhe merece um olhar atento.',
+    eyebrow: 'ESTÉTICA FACIAL',
+    title: 'Botox',
+    teaser: 'Cuidado facial com avaliação individualizada.',
     description:
-      'Explore a estética facial e converse com nossa equipe para conhecer os cuidados disponíveis na clínica.',
+      'A aplicação da toxina botulínica é planejada de forma individual, conforme a avaliação profissional e as características de cada pessoa.',
     variant: 'feature',
+    image: {
+      src: '/images/treatments/botox.webp',
+      alt: 'Profissional realizando atendimento estético na região da testa de uma paciente.',
+      position: 'center',
+    },
   },
   {
     id: 'corporal',

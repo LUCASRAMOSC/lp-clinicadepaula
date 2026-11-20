@@ -119,7 +119,7 @@ export default function TreatmentIndex() {
                   transition={transition}
                 >
                   <span className="treatment-index__overview-eyebrow">CLÍNICA DE PAULA / CUIDADOS</span>
-                  <span className="treatment-index__overview-mark" aria-hidden="true">C</span>
+                  <span className="treatment-index__overview-rule" aria-hidden="true" />
                   <h3>Um cuidado que começa por você.</h3>
                   <p>Explore as áreas acima ou converse com nossa equipe para conhecer os atendimentos disponíveis.</p>
                   <a className="treatment-index__action" href="#contato">
