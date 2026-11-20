@@ -60,23 +60,33 @@ export const treatments: readonly TreatmentItem[] = [
     },
   },
   {
-    id: 'destaque',
+    id: 'preenchimento-labial',
     number: '03',
-    eyebrow: 'EXPLORE NOSSOS CUIDADOS',
-    title: 'Em destaque',
-    teaser: 'Descubra o cuidado que faz sentido para seu momento.',
+    eyebrow: 'ESTÉTICA FACIAL',
+    title: 'Preenchimento labial',
+    teaser: 'Harmonia e definição respeitando os traços naturais.',
     description:
-      'Cada pessoa tem suas prioridades. Entre em contato para saber mais sobre as opções da Clínica de Paula.',
+      'O preenchimento labial busca valorizar o contorno e as proporções dos lábios. O planejamento é individualizado, com atenção às características e aos objetivos de cada pessoa.',
     variant: 'blush',
+    image: {
+      src: '/images/treatments/preenchimento-labial.webp',
+      alt: 'Profissional realizando atendimento estético facial em paciente reclinada na clínica.',
+      position: 'center',
+    },
   },
   {
-    id: 'possibilidades',
+    id: 'limpeza-de-pele',
     number: '04',
-    eyebrow: 'MAIS SOBRE A CLÍNICA',
-    title: 'Outras possibilidades',
-    teaser: 'Novos caminhos para conhecer e explorar.',
+    eyebrow: 'CUIDADOS COM A PELE',
+    title: 'Limpeza de pele',
+    teaser: 'Cuidado e atenção às necessidades da sua pele.',
     description:
-      'Seu próximo passo pode começar por uma conversa. Fale com nossa equipe para conhecer os atendimentos disponíveis.',
+      'A limpeza de pele é um cuidado adaptado às necessidades individuais, que pode incluir higienização e remoção de impurezas, conforme avaliação profissional.',
     variant: 'taupe',
+    image: {
+      src: '/images/treatments/limpeza-de-pele.webp',
+      alt: 'Profissional realizando cuidados faciais em paciente na clínica.',
+      position: 'center',
+    },
   },
 ] as const
