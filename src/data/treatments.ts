@@ -45,14 +45,19 @@ export const treatments: readonly TreatmentItem[] = [
     },
   },
   {
-    id: 'corporal',
+    id: 'depilacao-laser',
     number: '02',
-    eyebrow: 'ÁREA DE CUIDADO',
-    title: 'Estética corporal',
-    teaser: 'Um espaço para olhar com carinho para você.',
+    eyebrow: 'DEPILAÇÃO A LASER',
+    title: 'Depilação a laser',
+    teaser: 'Tecnologia e cuidado para a redução progressiva dos pelos.',
     description:
-      'Conheça nossa área de estética corporal e tire suas dúvidas sobre as possibilidades de atendimento.',
+      'A depilação a laser é planejada conforme as características da pele, dos pelos e da região tratada, com avaliação individual antes do procedimento.',
     variant: 'sand',
+    image: {
+      src: '/images/treatments/depilacao-laser.webp',
+      alt: 'Profissional utilizando equipamento de depilação a laser na região do pescoço de uma paciente com óculos de proteção.',
+      position: 'center',
+    },
   },
   {
     id: 'destaque',
