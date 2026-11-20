@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro'
 import { site } from '../config/site'
 import SmartNavigation from '../components/navigation/SmartNavigation'
 import HeroMotion from '../components/interactive/HeroMotion'
+import TreatmentIndex from '../components/interactive/TreatmentIndex'
 import Experience from '../sections/Experience.astro'
 import '../styles/page.css'
 ---
@@ -15,13 +16,7 @@ import '../styles/page.css'
   <main>
     <HeroMotion client:load />
 
-    <section id="tratamentos" class="section-anchor page-section page-section--surface">
-      <div class="page-container">
-        <p class="section-eyebrow">Tratamentos</p>
-        <h2 class="section-title section-title--wide">Cada cuidado merece atenção especial.</h2>
-        <p class="section-description">Em breve, apresentaremos os procedimentos e seus detalhes, definidos com as profissionais da clínica.</p>
-      </div>
-    </section>
+    <TreatmentIndex client:visible />
 
     <section id="equipe" class="section-anchor page-section">
       <div class="page-container">
