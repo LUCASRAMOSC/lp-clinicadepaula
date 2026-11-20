@@ -4,6 +4,7 @@ import { site } from '../config/site'
 import SmartNavigation from '../components/navigation/SmartNavigation'
 import HeroMotion from '../components/interactive/HeroMotion'
 import TreatmentIndex from '../components/interactive/TreatmentIndex'
+import TeamStory from '../sections/TeamStory.astro'
 import Experience from '../sections/Experience.astro'
 import '../styles/page.css'
 ---
@@ -18,21 +19,7 @@ import '../styles/page.css'
 
     <TreatmentIndex client:visible />
 
-    <section id="equipe" class="section-anchor page-section">
-      <div class="page-container">
-        <p class="section-eyebrow">Conheça nossa equipe</p>
-        <h2 class="section-title">Cuidado feito por pessoas.</h2>
-        <div class="team-grid">
-          {site.professionals.map((professional) => (
-            <article class="team-card">
-              <div class="team-card__accent" aria-hidden="true"></div>
-              <h3 class="team-card__name">{professional.name}</h3>
-              <p class="team-card__description">Apresentação e fotografia em preparação.</p>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
+    <TeamStory />
 
     <Experience />
 

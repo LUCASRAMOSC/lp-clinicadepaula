@@ -1,0 +1,30 @@
+---
+import { site } from '../config/site'
+import TeamSpotlight from '../components/interactive/TeamSpotlight'
+import '../styles/team-story.css'
+
+const professionals = site.professionals.slice(0, 2)
+
+const portrait = {
+  src: '/images/team/equipe-dupla.webp',
+  alt: 'Retrato conjunto na Clínica de Paula: Dra. Beatriz à esquerda, Dra. Bárbara à direita.',
+}
+---
+
+<section id="equipe" class="team-story section-anchor" aria-labelledby="team-story-title">
+  <div class="team-story__container">
+    <header class="team-story__heading">
+      <p class="team-story__eyebrow">
+        <span class="team-story__eyebrow-line" aria-hidden="true"></span>
+        EQUIPE
+      </p>
+      <h2 id="team-story-title">Duas profissionais, <em>um cuidado guiado por atenção aos detalhes.</em></h2>
+      <p>
+        A Clínica de Paula reúne abordagens complementares em uma experiência acolhedora,
+        elegante e pensada para acompanhar diferentes necessidades.
+      </p>
+    </header>
+
+    <TeamSpotlight client:load professionals={professionals} portrait={portrait} />
+  </div>
+</section>
