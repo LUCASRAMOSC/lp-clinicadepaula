@@ -90,3 +90,23 @@ export const treatments: readonly TreatmentItem[] = [
     },
   },
 ] as const
+
+/** Outras possibilidades de atendimento, exibidas abaixo do índice interativo. */
+export const additionalTreatments = [
+  {
+    professional: 'Dra. Bárbara',
+    services: [
+      'Lentes em resina',
+      'Clareamento e limpeza dental',
+      'Próteses dentárias',
+    ],
+  },
+  {
+    professional: 'Dra. Beatriz',
+    services: [
+      'Drenagem linfática',
+      'Microagulhamento facial',
+      'Peeling',
+    ],
+  },
+] as const

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
 import { ArrowRight, ArrowUpRight, ChevronDown } from 'lucide-react'
-import { treatments, type TreatmentItem } from '../../data/treatments'
+import { additionalTreatments, treatments, type TreatmentItem } from '../../data/treatments'
 import '../../styles/treatment-index.css'
 
 type TreatmentMediaProps = {
@@ -130,6 +130,36 @@ export default function TreatmentIndex() {
             </AnimatePresence>
           </div>
         </div>
+
+        {/* Continuação editorial: pertence à mesma seção #tratamentos. */}
+        <section className="treatment-index__more" aria-labelledby="treatment-more-title">
+          <div className="treatment-index__more-intro">
+            <div>
+              <p className="treatment-index__more-eyebrow">ALÉM DOS DESTAQUES</p>
+              <h3 id="treatment-more-title">Outros <em>tratamentos.</em></h3>
+            </div>
+            <p className="treatment-index__more-description">
+              Nosso cuidado vai além dos procedimentos apresentados acima.
+              Conheça outras opções oferecidas pelas profissionais da clínica.
+            </p>
+          </div>
+
+          <div className="treatment-index__more-grid">
+            {additionalTreatments.map((group) => (
+              <div className="treatment-index__more-group" key={group.professional}>
+                <h4>{group.professional}</h4>
+                <ul>
+                  {group.services.map((service) => <li key={service}>{service}</li>)}
+                </ul>
+              </div>
+            ))}
+          </div>
+
+          <p className="treatment-index__more-finish">
+            <span aria-hidden="true" />
+            E muito mais.
+          </p>
+        </section>
       </div>
     </section>
   )
