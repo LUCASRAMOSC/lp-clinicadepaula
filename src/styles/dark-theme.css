@@ -89,8 +89,14 @@ body .motion-hero__slide--pearl .motion-hero__kicker { color: var(--theme-gold-d
 
 body .motion-hero__slide--ink .motion-hero__title em,
 body .motion-hero__slide--sage .motion-hero__title em {
+  /* Isola a pintura metalica: evita cortes na caixa inline do italico. */
+  display: inline-block;
+  padding: .10em .14em .12em .06em;
+  margin: -.10em -.14em -.12em -.06em;
+  vertical-align: baseline;
   color: var(--theme-gold-bright);
   background: var(--finish-champagne);
+  background-repeat: no-repeat;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
